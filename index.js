@@ -1,7 +1,7 @@
 import express from 'express'
 import path, {dirname} from 'path'
 import {fileURLToPath} from 'url'
-import {engine} from 'express-handlebars'
+import {engine, create} from 'express-handlebars'
 
 const __fileName = fileURLToPath(import.meta.url)
 const __dirName = dirname(__fileName)
@@ -9,8 +9,13 @@ const __dirName = dirname(__fileName)
 
 const app = express()
 
-app.engine('handlebars', engine())
-app.set('view engine', 'handlebars')
+const hbs = create({ // handlebars is too long-written, so we are creating a hbs to put like main.hbs
+	defaultLayout: 'main',
+	extname: 'hbs',
+})
+
+app.engine('hbs', hbs.engine)
+app.set('view engine', 'hbs')
 app.set('views', './views')
 
 
