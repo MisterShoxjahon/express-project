@@ -16,4 +16,14 @@ authRouter.get('/register', (req, res) => {
 	})
 })
 
+authRouter.post('/login', (req, res) => {
+	console.log(req.body)
+	res.redirect('/')
+})
+
+authRouter.post('/register', (req, res) => {
+	console.log(req.body)
+	res.redirect('/')
+})
+
 export default authRouter
