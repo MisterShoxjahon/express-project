@@ -1,13 +1,19 @@
-import {Router} from 'express'
+import { Router } from 'express'
 
 const authRouter = Router()
 
 authRouter.get('/login', (req, res) => {
-	res.render('login')
+	res.render('login', {
+		title: 'Login | LilBro',
+		isRegister: true,
+	})
 })
 
 authRouter.get('/register', (req, res) => {
-	res.render('register')
+	res.render('register', {
+		title: 'Register | LilBro',
+		isLogin: true,
+	})
 })
 
 export default authRouter
